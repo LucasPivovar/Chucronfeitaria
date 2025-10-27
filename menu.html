@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Chucronfeitaria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/menu.css">
+    <link rel="stylesheet" href="./assets/css/global-vars.css"> 
+</head>
+<body>
+    <header>
+        <div class="logo">Chucronfeitaria</div>
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#cookers">Cozinheiros</a></li>
+                <li><a href="index.html#order">Pedidos</a></li>
+                <li><a href="index.html#contact">Contato</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <section class="menu-hero">
+        <div class="menu-hero-content">
+            <h1>Nosso Cardápio</h1>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">Todos</button>
+            <button class="filter-btn" data-category="bolos">Bolos</button>
+            <button class="filter-btn" data-category="brigadeiros">Brigadeiros</button>
+            <button class="filter-btn" data-category="tortas">Tortas</button>
+            <button class="filter-btn" data-category="cupcakes">Cupcakes</button>
+            <button class="filter-btn" data-category="doces">Doces Finos</button>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="menu-grid" id="menuGrid">
+            <div class="menu-item" data-category="bolos" style="animation-delay: 0.2s">
+                <img src="./assets/menu_items/bolo_cenoura.svg" alt="Bolo de Cenoura" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Bolo de Cenoura</h3>
+                        <span class="menu-item-price" data-price="40.00">R$ 40,00</span>
+                    </div>
+                    <p class="menu-item-description">Bolo fofinho de cenoura com cobertura cremosa de chocolate. Perfeito para o café da tarde.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag">Clássico</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="bolos" style="animation-delay: 0.3s">
+                <img src="./assets/menu_items/bolo_red_velvet.svg" alt="Bolo Red Velvet" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Bolo Red Velvet</h3>
+                        <span class="menu-item-price" data-price="55.00">R$ 55,00</span>
+                    </div>
+                    <p class="menu-item-description">Bolo aveludado com cream cheese. Sofisticado e irresistível.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag new">Novo</span>
+                        <span class="tag">Premium</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="brigadeiros" style="animation-delay: 0.4s">
+                <img src="./assets/menu_items/brigadeiro.svg" alt="Brigadeiro Chucro" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Brigadeiro Chucro</h3>
+                        <span class="menu-item-price" data-price="2.50">R$ 2,50</span>
+                    </div>
+                    <p class="menu-item-description">Nosso carro-chefe! Brigadeiro gourmet com chocolate belga e um toque especial da casa.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag popular">Popular</span>
+                        <span class="tag">Exclusivo</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="brigadeiros" style="animation-delay: 0.5s">
+                <img src="./assets/menu_items/beijinho.svg" alt="Beijinho Premium" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Beijinho Premium</h3>
+                        <span class="menu-item-price" data-price="2.50">R$ 2,50</span>
+                    </div>
+                    <p class="menu-item-description">Beijinho artesanal com coco fresco e recheio de doce de leite.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag">Gourmet</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="brigadeiros" style="animation-delay: 0.6s">
+                <img src="./assets/menu_items/brigadeiro_morango.svg" alt="Brigadeiro Morango" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Brigadeiro Morango</h3>
+                        <span class="menu-item-price" data-price="3.00">R$ 3,00</span>
+                    </div>
+                    <p class="menu-item-description">Brigadeiro branco com morango fresco e cobertura de chocolate rosa.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag new">Novo</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="tortas" style="animation-delay: 0.7s">
+                <img src="./assets/menu_items/torta_limao.svg" alt="Torta de Limão" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Torta de Limão</h3>
+                        <span class="menu-item-price" data-price="65.00">R$ 65,00</span>
+                    </div>
+                    <p class="menu-item-description">Torta cremosa de limão com merengue suíço levemente tostado.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag popular">Popular</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="tortas" style="animation-delay: 0.8s">
+                <img src="./assets/menu_items/torta_holandesa.svg" alt="Torta Holandesa" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Torta Holandesa</h3>
+                        <span class="menu-item-price" data-price="70.00">R$ 70,00</span>
+                    </div>
+                    <p class="menu-item-description">Camadas de creme e chocolate com base crocante de biscoito.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag">Premium</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="cupcakes" style="animation-delay: 0.9s">
+                <img src="./assets/menu_items/cupcake_chocolate.svg" alt="Cupcake Chocolate" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Cupcake Chocolate</h3>
+                        <span class="menu-item-price" data-price="8.00">R$ 8,00</span>
+                    </div>
+                    <p class="menu-item-description">Cupcake de chocolate com cobertura cremosa e decoração artesanal.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag">Clássico</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="cupcakes" style="animation-delay: 1s">
+                <img src="./assets/menu_items/cupcake_redvelvet.svg" alt="Cupcake Red Velvet" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Cupcake Red Velvet</h3>
+                        <span class="menu-item-price" data-price="9.00">R$ 9,00</span>
+                    </div>
+                    <p class="menu-item-description">Cupcake aveludado com cream cheese e decoração elegante.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag new">Novo</span>
+                        <span class="tag">Premium</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="doces" style="animation-delay: 1.1s">
+                <img src="./assets/menu_items/box.svg" alt="Caixa Doces Finos" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Caixa Doces Finos</h3>
+                        <span class="menu-item-price" data-price="35.00">R$ 35,00</span>
+                    </div>
+                    <p class="menu-item-description">Caixa com 15 doces finos sortidos, perfeita para presentear. Inclui brigadeiros, beijinhos e cajuzinhos.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag popular">Popular</span>
+                        <span class="tag">Presente</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="doces" style="animation-delay: 1.2s">
+                <img src="./assets/menu_items/cajuzinho gourmet.svg" alt="Cajuzinho Gourmet" class="menu-item-image">
+                <div class="menu-item-content">
+                    <div class="menu-item-header">
+                        <h3 class="menu-item-title">Cajuzinho Gourmet</h3>
+                        <span class="menu-item-price" data-price="2.80">R$ 2,80</span>
+                    </div>
+                    <p class="menu-item-description">Cajuzinho artesanal com amendoim torrado e chocolate nobre.</p>
+                    <div class="menu-item-tags">
+                        <span class="tag">Artesanal</span>
+                    </div>
+                    <button class="order-btn" onclick="openModal(this)">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage"></div>
+                <div class="modal-price" id="modalPrice"></div>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                    <span class="quantity-value" id="quantity">1</span>
+                    <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                </div>
+                <button class="order-btn" onclick="addToCart()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>🛒 Meu Carrinho</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <div class="cart-empty-icon">🍰</div>
+                <p>Seu carrinho está vazio</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Adicione alguns doces deliciosos!</p>
+            </div>
+        </div>
+        
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+            <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
+        </div>
+    </div>
+
+    <button class="cart-button" onclick="toggleCart()">
+        🛒
+        <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+    </button>
+
+    <script src="./assets/js/menu.js"></script>
+</body>
+</html>

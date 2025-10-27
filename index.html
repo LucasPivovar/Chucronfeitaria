@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chucronfeitaria - Tradição desde 1909</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/global-vars.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Chucronfeitaria</div>
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#cookers">Cozinheiros</a></li>
+                <li><a href="#order">Pedidos</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li><a href="menu.html">Menu</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <section class="main" id="home">
+        <div class="container">
+            <h1>Seja Bem-Vindo à Chucronfeitaria</h1>
+            <p>Combinando o rústico com o moderno <span>desde 1909</span></p>
+            <button onclick="document.getElementById('order').scrollIntoView({behavior: 'smooth'})">Peça Agora</button>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container-about">
+            <h1>Sobre Nós</h1>
+            <h3>O nome "Chucronfeitaria" é mais do que um nome. É a nossa filosofia. Acreditamos em uma confeitaria sem frescuras, onde a qualidade dos ingredientes e o sabor genuíno são a nossa prioridade. Cada doce é feito à mão, com dedicação e carinho, usando apenas o melhor.</h3>
+            <div class="box">
+                <div class="carousel">
+                    <div class="carousel-inner" id="carouselInner">
+                        <img src="./assets/foto1.webp" alt="Foto 1">
+                        <img src="./assets/foto2.webp" alt="Foto 2">
+                        <img src="./assets/foto3.jfif" alt="Foto 3">
+                    </div>
+                    <button class="prev button-carousel" onclick="moveSlide(-1)">&#10094;</button>
+                    <button class="next button-carousel" onclick="moveSlide(1)">&#10095;</button>
+                </div>
+                <div class="text-box">
+                    <p>Aqui, a gente transforma os clássicos da infância em uma nova e inesquecível experiência. Nossos bolos de vó têm o sabor que conforta e a qualidade que surpreende.</p>
+                    <p>Experimente o nosso "Brigadeiro Chucro", um bolo que celebra a simplicidade com um toque audacioso. Ele é o nosso carro-chefe e a sua nova paixão.</p>
+                    <p>Feito com ingredientes de verdade ✨</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cookers" id="cookers">
+        <div class="container-cookers">
+            <h1>Nossos Confeiteiros</h1>
+            <ul>
+                <li class="cooker">
+                    <div class="cooker-card cooker-cleber">
+                        <p>Chef Maria Santos</p>
+                    </div>
+                </li>
+                <li class="cooker">
+                    <div class="cooker-card cooker-joao">
+                        <p>Chef João Silva</p>
+                    </div>
+                </li>
+                <li class="cooker">
+                    <div class="cooker-card cooker-ana">
+                        <p>Chef Ana Costa</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="order-section" id="order">
+        <div class="order-container">
+            <h1>Faça Seu Pedido</h1>
+            <div class="order-content">
+                <div class="order-form">
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Endereço</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sweet">Tipo de Doce</label>
+                            <select id="sweet" required>
+                                <option value="">Selecione...</option>
+                                <option value="brigadeiro">Brigadeiro Chucro</option>
+                                <option value="torta">Torta Artesanal</option>
+                                <option value="cupcake">Cupcakes</option>
+                                <option value="custom">Pedido Personalizado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Detalhes do Pedido</label>
+                            <textarea id="details" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar Pedido</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Chucronfeitaria</h3>
+                <p>Tradição e qualidade desde 1909</p>
+                <p>Fazendo doces com amor e dedicação</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📞 (41) 3333-4444</p>
+                <p>📧 contato@chucronfeitaria.com.br</p>
+                <p>📍 Fazenda Rio Grande, PR</p>
+            </div>
+            <div class="footer-section">
+                <h3>Horário</h3>
+                <p>Segunda a Sexta: 8h - 18h</p>
+                <p>Sábado: 8h - 14h</p>
+                <p>Domingo: Fechado</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chucronfeitaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

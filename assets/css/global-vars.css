@@ -1,0 +1,120 @@
+:root {
+    /* Cores Primárias */
+    --color-primary: #8b6f47;
+    --color-primary-dark: #6b5437;
+    --color-accent: #d4a373;
+    --color-secondary: #a0826d;
+
+    /* Cores de Texto */
+    --color-text-primary: #2c2c2c;
+    --color-text-secondary: #555;
+    --color-text-tertiary: #777;
+    --color-text-white: #ffffff;
+    --color-text-light: #ccc;
+    --color-text-lighter: #ddd;
+
+    /* Cores de Fundo */
+    --color-bg-white: #ffffff;
+    --color-bg-light: #f9f6f2;
+    --color-bg-medium: #3d3027;
+    --color-bg-dark: #2c1f14;
+
+    /* Cores com Transparência */
+    --color-white-alpha-98: rgba(255, 255, 255, 0.98);
+    --color-white-alpha-90: rgba(255, 255, 255, 0.9);
+    --color-white-alpha-05: rgba(255, 255, 255, 0.05);
+    --color-black-alpha-50: rgba(0, 0, 0, 0.5);
+    --color-accent-alpha-30: rgba(212, 163, 115, 0.3);
+    --color-accent-alpha-10: rgba(212, 163, 115, 0.1);
+
+    /* Bordas */
+    --color-border-light: #e0e0e0;
+    --color-border-medium: rgba(255, 255, 255, 0.1);
+
+    /* Fontes */
+    --font-primary: 'Roboto', sans-serif;
+    --font-display: 'Playfair Display', serif;
+
+    /* Tamanhos de Fonte */
+    --font-size-hero: 4rem;
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 1.8rem;
+    --font-size-xlarge: 1.5rem;
+    --font-size-large: 1.2rem;
+    --font-size-medium: 1.1rem;
+    --font-size-base: 1rem;
+    --font-size-small: 0.9rem;
+    --font-size-icon: 5rem;
+
+    /* Pesos de Fonte */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    --spacing-section: 5rem;
+
+    /* Bordas Arredondadas */
+    --border-radius-small: 8px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 16px;
+    --border-radius-xlarge: 20px;
+    --border-radius-round: 50px;
+    --border-radius-circle: 50%;
+
+    /* Sombras */
+    --shadow-small: 0 2px 20px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 5px 25px rgba(0, 0, 0, 0.15);
+    --shadow-large: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 15px 50px rgba(212, 163, 115, 0.3);
+    --shadow-button: 0 8px 20px rgba(212, 163, 115, 0.4);
+    --shadow-primary: 0 8px 20px rgba(139, 111, 71, 0.3);
+    --shadow-nav: -5px 0 20px rgba(0, 0, 0, 0.1);
+
+    /* Transições */
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.5s ease;
+    --transition-slow: 0.8s ease;
+
+    /* Alturas */
+    --header-height: 80px;
+    --button-height: 50px;
+
+    /* Tamanhos de Ícones */
+    --social-icon-size: 45px;
+
+    /* Line Heights */
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.8;
+
+    /* Z-Index */
+    --z-index-header: 1000;
+    --z-index-negative: -1;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    :root {
+        --font-size-hero: 2.5rem;
+        --font-size-h1: 2rem;
+        --font-size-h2: 1.8rem;
+        --font-size-h3: 1.5rem;
+        --spacing-section: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-hero: 2rem;
+        --font-size-h1: 1.8rem;
+        --spacing-section: 2rem;
+    }
+}
