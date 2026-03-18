@@ -1,5 +1,5 @@
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('chucro_cart')) || [];
 let currentQuantity = 1;
 let currentItem = null;
 
@@ -10,8 +10,13 @@ const cartSidebar = document.getElementById('cartSidebar');
 const cartOverlay = document.getElementById('cartOverlay');
 const cartItems = document.getElementById('cartItems');
 const cartBadge = document.getElementById('cartBadge');
+const cartBadgeHeader = document.getElementById('cartBadgeHeader');
 const cartTotal = document.getElementById('cartTotal');
 const cartFooter = document.getElementById('cartFooter');
+
+function saveCart() {
+    localStorage.setItem('chucro_cart', JSON.stringify(cart));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
@@ -106,20 +111,22 @@ function changeQuantity(delta) {
 }
 
 function addToCart() {
-    const existingItem = cart.find(item => item.title === currentItem.title);
+    if (!currentItem) return;
+
+    const existingItem = cart.find(item => item.name === currentItem.title);
 
     if (existingItem) {
         existingItem.quantity += currentQuantity;
     } else {
         cart.push({
-            title: currentItem.title,
-            price: currentItem.price,
-            priceValue: currentItem.priceValue,
-            imageSrc: currentItem.imageSrc,
+            name: currentItem.title,
+            price: currentItem.priceValue,
+            image: currentItem.imageSrc,
             quantity: currentQuantity
         });
     }
 
+    saveCart();
     updateCartUI();
     closeModal();
     showNotification(`${currentQuantity}x ${currentItem.title} adicionado ao carrinho!`);
@@ -135,17 +142,25 @@ function updateCartUI() {
     // Atualizar badge
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     
-    if (totalItems > 0) {
-        cartBadge.textContent = totalItems;
-        cartBadge.style.display = 'flex';
-    } else {
-        cartBadge.style.display = 'none';
+    if (cartBadge) {
+        if (totalItems > 0) {
+            cartBadge.textContent = totalItems;
+            cartBadge.style.display = 'flex';
+        } else {
+            cartBadge.style.display = 'none';
+        }
     }
+
+    if (cartBadgeHeader) {
+        cartBadgeHeader.textContent = totalItems;
+    }
+
+    saveCart();
 
     if (cart.length === 0) {
         cartItems.innerHTML = `
             <div class="cart-empty">
-                <div class="cart-empty-icon">🍰</div>
+                <div class="cart-empty-icon"><i class="fas fa-birthday-cake"></i></div>
                 <p>Seu carrinho está vazio</p>
                 <p style="font-size: 0.9rem; margin-top: 0.5rem;">Adicione alguns doces deliciosos!</p>
             </div>
@@ -155,11 +170,11 @@ function updateCartUI() {
         cartItems.innerHTML = cart.map((item, index) => `
             <div class="cart-item">
                 <div class="cart-item-image">
-                    <img src="${item.imageSrc}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                    <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
                 </div>
                 <div class="cart-item-details">
-                    <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">${item.price}</div>
+                    <div class="cart-item-title">${item.name}</div>
+                    <div class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
                     <div class="cart-item-controls">
                         <button class="cart-qty-btn" onclick="updateCartQuantity(${index}, -1)">-</button>
                         <span class="cart-qty">${item.quantity}</span>
@@ -172,7 +187,7 @@ function updateCartUI() {
         cartFooter.style.display = 'block';
     }
 
-    const total = cart.reduce((sum, item) => sum + (item.priceValue * item.quantity), 0);
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
@@ -183,14 +198,16 @@ function updateCartQuantity(index, delta) {
         cart.splice(index, 1);
     }
     
+    saveCart();
     updateCartUI();
 }
 
 function removeFromCart(index) {
     const item = cart[index];
     cart.splice(index, 1);
+    saveCart();
     updateCartUI();
-    showNotification(`${item.title} removido do carrinho`);
+    showNotification(`${item.name} removido do carrinho`);
 }
 
 function clearCart() {
@@ -198,6 +215,7 @@ function clearCart() {
     
     if (confirm('Deseja realmente limpar todo o carrinho?')) {
         cart = [];
+        saveCart();
         updateCartUI();
         showNotification('Carrinho limpo!');
     }

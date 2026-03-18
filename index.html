@@ -6,6 +6,7 @@
     <title>Chucronfeitaria - Tradição desde 1909</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/global-vars.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -15,22 +16,24 @@
         <div class="logo">Chucronfeitaria</div>
         <nav id="nav">
             <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#cookers">Cozinheiros</a></li>
-                <li><a href="#order">Pedidos</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="index.html">Início</a></li>
                 <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contato</a></li>
             </ul>
         </nav>
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="header-actions">
+            <button id="cartBtn" onclick="toggleCart()" class="cart-btn-header">
+                <i class="fas fa-shopping-basket"></i> <span id="cartBadgeHeader">0</span>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
-    <section class="main" id="home">
+    <section class="main reveal" id="home">
         <div class="container">
             <h1>Seja Bem-Vindo à Chucronfeitaria</h1>
             <p>Combinando o rústico com o moderno <span>desde 1909</span></p>
@@ -38,16 +41,16 @@
         </div>
     </section>
 
-    <section class="about" id="about">
+    <section class="about reveal" id="about">
         <div class="container-about">
             <h1>Sobre Nós</h1>
             <h3>O nome "Chucronfeitaria" é mais do que um nome. É a nossa filosofia. Acreditamos em uma confeitaria sem frescuras, onde a qualidade dos ingredientes e o sabor genuíno são a nossa prioridade. Cada doce é feito à mão, com dedicação e carinho, usando apenas o melhor.</h3>
             <div class="box">
                 <div class="carousel">
                     <div class="carousel-inner" id="carouselInner">
-                        <img src="./assets/foto1.webp" alt="Foto 1">
-                        <img src="./assets/foto2.webp" alt="Foto 2">
-                        <img src="./assets/foto3.jfif" alt="Foto 3">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1000&auto=format&fit=crop" alt="Bolo Gourmet">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop" alt="Pães Artesanais">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=1000&auto=format&fit=crop" alt="Confeiteiro em Ação">
                     </div>
                     <button class="prev button-carousel" onclick="moveSlide(-1)">&#10094;</button>
                     <button class="next button-carousel" onclick="moveSlide(1)">&#10095;</button>
@@ -61,30 +64,60 @@
         </div>
     </section>
 
-    <section class="cookers" id="cookers">
+    <section class="cookers reveal" id="cookers">
         <div class="container-cookers">
             <h1>Nossos Confeiteiros</h1>
-            <ul>
-                <li class="cooker">
-                    <div class="cooker-card cooker-cleber">
+            <ul class="chef-grid">
+                <li class="cooker reveal" style="transition-delay: 0.1s;">
+                    <div class="cooker-card cooker-cleber" onclick="openChefDetail(0)">
                         <p>Chef Maria Santos</p>
                     </div>
                 </li>
-                <li class="cooker">
-                    <div class="cooker-card cooker-joao">
+                <li class="cooker reveal" style="transition-delay: 0.3s;">
+                    <div class="cooker-card cooker-joao" onclick="openChefDetail(1)">
                         <p>Chef João Silva</p>
                     </div>
                 </li>
-                <li class="cooker">
-                    <div class="cooker-card cooker-ana">
-                        <p>Chef Ana Costa</p>
+                <li class="cooker reveal" style="transition-delay: 0.5s;">
+                    <div class="cooker-card cooker-andre" onclick="openChefDetail(2)">
+                        <p>Chef André Costa</p>
                     </div>
                 </li>
             </ul>
         </div>
     </section>
 
-    <section class="order-section" id="order">
+    <!-- Chef Detail Modal -->
+    <div id="chefModal" class="chef-modal-overlay">
+        <div class="chef-modal-content">
+            <button class="chef-modal-close" onclick="closeChefDetail()">&times;</button>
+            <button class="chef-nav-btn prev-chef" onclick="navigateChef(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="chef-nav-btn next-chef" onclick="navigateChef(1)"><i class="fas fa-chevron-right"></i></button>
+            
+            <div class="chef-detail-grid">
+                <div id="chefDetailImage" class="chef-detail-image"></div>
+                <div class="chef-detail-info">
+                    <h2 id="chefDetailName">Nome do Chef</h2>
+                    <h4 id="chefDetailTitle">Título</h4>
+                    <div class="chef-detail-description">
+                        <p id="chefDetailBio">Biografia do chef...</p>
+                        <div class="chef-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span id="chefDetailEdu">Formação</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span id="chefDetailExp">Experiência</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="order-section reveal" id="order">
         <div class="order-container">
             <h1>Faça Seu Pedido</h1>
             <div class="order-content">
@@ -123,6 +156,30 @@
         </div>
     </section>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-basket"></i> Meu Carrinho</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <div class="cart-empty-icon"><i class="fas fa-birthday-cake"></i></div>
+                <p>Seu carrinho está vazio</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Escolha um bolo delicioso no Menu!</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-value" id="cartTotal">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Finalizar Pedido</button>
+            <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
+        </div>
+    </div>
+
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
@@ -132,9 +189,9 @@
             </div>
             <div class="footer-section">
                 <h3>Contato</h3>
-                <p>📞 (41) 3333-4444</p>
-                <p>📧 contato@chucronfeitaria.com.br</p>
-                <p>📍 Fazenda Rio Grande, PR</p>
+                <p><i class="fas fa-phone"></i> (41) 3333-4444</p>
+                <p><i class="fas fa-envelope"></i> contato@chucronfeitaria.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> Fazenda Rio Grande, PR</p>
             </div>
             <div class="footer-section">
                 <h3>Horário</h3>
@@ -145,9 +202,9 @@
             <div class="footer-section">
                 <h3>Redes Sociais</h3>
                 <div class="social-links">
-                    <a href="#" title="Facebook">📘</a>
-                    <a href="#" title="Instagram">📷</a>
-                    <a href="#" title="WhatsApp">💬</a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
